@@ -3,13 +3,12 @@
 A simple language for programming an attiny85, write in c or rust and based on c and avr library
 
 ## FUNCTION:
-- simple aritmetic operation (+, -, *, /, **)
-- making variable (type: int8, char, bool, list/queue, null)
-- for and while loop
+- simple aritmetic operation (+, -, *, /)
+- making variable (type: int, string, bool, nil)
+- for loop
 - if/else statement
 - fun for creating new function
 - return for returning value
-- enum/struct (maybe class)
 
 - serialPin(pin, "rd" or "wr")
 - analogPin(pin, "rd" or "wr")
