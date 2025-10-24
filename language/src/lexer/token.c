@@ -1,6 +1,5 @@
 #include "lexer.h"
-#include <string.h>
-
+#include "token.h"
 
 Token newToken(TokenType type, char* lexeme, char* literal, int line_number) {
     Token token = {type, lexeme, literal, line_number};

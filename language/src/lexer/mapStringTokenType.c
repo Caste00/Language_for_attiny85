@@ -1,6 +1,10 @@
 #include "dynamic_array_and_map.h"
 #include <stdlib.h>
 
+// E' ottimizzabile implementando una vera hashmap, ma per quei pochi valori forse non conviene
+// credo sia superflua persino il fatto che vengano aggiunti dinamicamente, 100 come limite 
+// sarebbe stato più che sufficiente e avrebbe reso un po' più semplice il programma
+
 // KeywordEntry
 KeywordEntry newKeywordEntry(char* key, TokenType value) {
     KeywordEntry entry;
@@ -50,7 +54,7 @@ void pushKeywordEntry(KeywordMap* map, char* key, TokenType value) {
     pushKeywordMap(map, entry);
 }
 
-// qui si può ottimizzare la ricerca, per ora uso un bublesort
+// qui si può ottimizzare la ricerca, per ora scorro tutto e cerco
 TokenType lookupKeyword(KeywordMap* map, char* key) {
     if (!map) {
         printf("empty map\n");

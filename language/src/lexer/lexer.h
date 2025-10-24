@@ -42,15 +42,8 @@ typedef enum {
     END_OF_FILE
 } TokenType;
 
-typedef struct {
-    TokenType type;
-    char* lexeme;
-    char* literal;
-    int line_number;
-} Token;
-
-Token newToken(TokenType type, char* lexeme, char* literal, int line_number);
-void printToken(Token token);
-void freeToken(Token* token);
+void initScanner(const char* src);
+void scanTokens();
+void freeScanner();
 
 #endif

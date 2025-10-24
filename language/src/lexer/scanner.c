@@ -32,7 +32,7 @@ void initKeywords(KeywordMap* map) {
     pushKeywordEntry(&keyword, "bool", BOOL);
 }
 
-void initScanner(Scanner* scanner, const char* src) {
+void initScanner(const char* src) {
     initKeyword(&keyword);
     tokens = initTokenArray();
     source = strdup(src);
