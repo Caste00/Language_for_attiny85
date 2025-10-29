@@ -1,14 +1,15 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
-#include "../lexer/Token.h"
+#include "../lexer/token.h"
 #include "value.h"
+#include <stdlib.h>
 
-typedef Enum {
-    EXPR_BYNARY,
+typedef enum {
+    EXPR_BINARY,
     EXPR_UNARY,
     EXPR_LITERAL,
-    EXPR_GROUPING
+    EXPR_GROUPING,
 } ExprType;
 
 typedef struct Expr Expr;

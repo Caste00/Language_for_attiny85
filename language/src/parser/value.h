@@ -42,7 +42,7 @@ static inline Value makeInt(int i) {
 static inline Value makeBool(bool b) {
     Value v;
     v.type = VAL_BOOL;
-    v.as.boolean;
+    v.as.boolean = b;
     return v;
 }
 

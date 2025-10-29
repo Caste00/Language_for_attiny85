@@ -1,9 +1,10 @@
 #include "lexer.h"
+#include "token.h"
 #include "dynamic_array_and_map.h"
+#include "../error_handling/error.h"
 
 /* Miglioramenti possibili: 
  * - incapsulare le variabili globali in una struct
- * - gestire gli errori in modo migliore (gestore degli errori)
 */
 
 char* source;
@@ -14,9 +15,8 @@ int line = 1;
 KeywordMap keyword;
 
 
-
-void initKeywords(KeywordMap* map) {
-    map = initKeywordMap();
+void initKeywords() {
+    keyword = initKeywordMap();
 
     pushKeywordEntry(&keyword, "and", AND);
     pushKeywordEntry(&keyword, "if", IF);
@@ -33,7 +33,7 @@ void initKeywords(KeywordMap* map) {
 }
 
 void initScanner(const char* src) {
-    initKeyword(&keyword);
+    initKeywords();
     tokens = initTokenArray();
     source = strdup(src);
 }
@@ -43,7 +43,7 @@ int isAtEnd() {
 }
 
 char advance() {
-    return source[current++]
+    return source[current++];
 }
 
 char peek() {
@@ -96,8 +96,7 @@ void string() {
     }
 
     if (isAtEnd()) {
-        // gestione degli errori con una funzione apposita
-        printf("Error at line %d: unterminated string\n", line);
+        printError(line, "unterminated string");
         return;
     }
 
@@ -173,7 +172,7 @@ void scanToken() {
                     } else if (isAlpha(c)) {
                         identifier();
                     } else {
-                        printf("Error at line %d: unexpected character %c.", line, c);
+                        printError(line, "unexpected character");
                         break;
                     }
     }
@@ -188,7 +187,6 @@ void scanTokens() {
     Token token = newToken(END_OF_FILE, "", NULL, line);
     pushTokenArray(&tokens, token);
 }
-
 
 void freeScanner() {
     free(source);
