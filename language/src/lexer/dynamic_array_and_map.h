@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "lexer.h"
+#include "token.h"
 
 // dynamic array of Token
 typedef struct {

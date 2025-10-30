@@ -44,7 +44,10 @@ struct Expr {
 };
 
 
-// serviranno funzioni per creare e deallocare ogni nodo come ExprBinary
-
+Expr* newBinaryExpr(Expr* left, Token operator, Expr* right);
+Expr* newUnaryExpr(Token operator, Expr* right);
+Expr* newLiteralExpr(Value value);
+Expr* newGroupingExpr(Expr* expression);
+void freeExpr(Expr* expr);
 
 #endif

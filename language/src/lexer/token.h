@@ -2,6 +2,7 @@
 #define TOKEN_H
 
 #include <string.h>
+#include "lexer.h"
 
 typedef struct {
     TokenType type;
